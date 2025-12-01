@@ -1,6 +1,46 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StatCard from '@/components/StatCard';
+
+const statsData = [
+  {
+    icon: 'ri-virus-line',
+    counter: 221,
+    suffix: 'Juta',
+    title: 'Target Empuk di Indonesia',
+    percent: 74,
+    details: [
+      '🔴 60%+ akses lewat smartphone yang rentan',
+      '🔴 Mayoritas gak aktifin 2FA & jarang update sistem',
+      '💡 Hacker cari yang lemah duluan - jangan jadi korban!'
+    ]
+  },
+  {
+    icon: 'ri-lock-password-line',
+    counter: 403,
+    suffix: 'M',
+    title: 'Serangan Siber Tercatat',
+    percent: 80,
+    details: [
+      '⚠️ Phishing, ransomware, & credential stuffing mendominasi',
+      '⏰ Jam sibuk = jam rawan (pagi & malam hari)',
+      '🛡️ Kamu butuh: Password kuat + 2FA + waspada selalu!'
+    ]
+  },
+  {
+    icon: 'ri-spy-line',
+    counter: 65,
+    suffix: '%',
+    title: 'Gen Z & Milenial Jadi Korban',
+    percent: 65,
+    details: [
+      '💸 Giveaway palsu, investasi instan, APK kiriman "kurir"',
+      '🧠 Mereka mainkan FOMO & kepercayaanmu ke influencer',
+      '✅ Cek link, jangan install APK sembarangan, waspada urgent!'
+    ]
+  }
+];
 
 export default function Home() {
   return (
@@ -32,78 +72,20 @@ export default function Home() {
           <h2>
             KENYATAAN PAHIT <span className="accent"> ///</span>
           </h2>
-          <p>Data aktual dari lapang perang digital Indonesia 2024</p>
+          <p>Data berdasarkan laporan BSSN & APJII 2024</p>
         </div>
         <div className="stats-grid">
-          <div className="stat-card highlight" data-percent="74">
-            <div className="icon-stat">
-              <i className="ri-virus-line"></i>
-            </div>
-            <h3 className="counter" data-target="221">
-              221
-            </h3>
-            <span className="suffix">Juta</span>
-            <p>Target Empuk di Indonesia</p>
-            <div className="stat-progress" aria-hidden="true">
-              <div className="bar"></div>
-            </div>
-            <button className="stat-toggle" aria-expanded={false} aria-controls="stat-detail-1">
-              Selengkapnya <i className="ri-arrow-down-s-line" aria-hidden="true"></i>
-            </button>
-            <div className="stat-details" id="stat-detail-1" hidden>
-              <ul>
-                <li>🔴 60%+ akses lewat smartphone yang rentan</li>
-                <li>🔴 Mayoritas gak aktifin 2FA & jarang update sistem</li>
-                <li>💡 Hacker cari yang lemah duluan - jangan jadi korban!</li>
-              </ul>
-            </div>
-          </div>
-          <div className="stat-card highlight" data-percent="80">
-            <div className="icon-stat">
-              <i className="ri-lock-password-line"></i>
-            </div>
-            <h3 className="counter" data-target="403">
-              403
-            </h3>
-            <span className="suffix">M</span>
-            <p>Serangan Siber Tercatat</p>
-            <div className="stat-progress" aria-hidden="true">
-              <div className="bar"></div>
-            </div>
-            <button className="stat-toggle" aria-expanded={false} aria-controls="stat-detail-2">
-              Selengkapnya <i className="ri-arrow-down-s-line" aria-hidden="true"></i>
-            </button>
-            <div className="stat-details" id="stat-detail-2" hidden>
-              <ul>
-                <li>⚠️ Phishing, ransomware, & credential stuffing mendominasi</li>
-                <li>⏰ Jam sibuk = jam rawan (pagi & malam hari)</li>
-                <li>🛡️ Kamu butuh: Password kuat + 2FA + waspada selalu!</li>
-              </ul>
-            </div>
-          </div>
-          <div className="stat-card highlight" data-percent="65">
-            <div className="icon-stat">
-              <i className="ri-spy-line"></i>
-            </div>
-            <h3 className="counter" data-target="65">
-              65
-            </h3>
-            <span className="suffix">%</span>
-            <p>Gen Z & Milenial Jadi Korban</p>
-            <div className="stat-progress" aria-hidden="true">
-              <div className="bar"></div>
-            </div>
-            <button className="stat-toggle" aria-expanded={false} aria-controls="stat-detail-3">
-              Selengkapnya <i className="ri-arrow-down-s-line" aria-hidden="true"></i>
-            </button>
-            <div className="stat-details" id="stat-detail-3" hidden>
-              <ul>
-                <li>💸 Giveaway palsu, investasi instan, APK kiriman &quot;kurir&quot;</li>
-                <li>🧠 Mereka mainkan FOMO & kepercayaanmu ke influencer</li>
-                <li>✅ Cek link, jangan install APK sembarangan, waspada urgent!</li>
-              </ul>
-            </div>
-          </div>
+          {statsData.map((stat, index) => (
+            <StatCard
+              key={index}
+              icon={stat.icon}
+              counter={stat.counter}
+              suffix={stat.suffix}
+              title={stat.title}
+              percent={stat.percent}
+              details={stat.details}
+            />
+          ))}
         </div>
         <div className="data-source">
           <small>

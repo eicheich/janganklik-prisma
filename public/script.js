@@ -85,7 +85,7 @@ if (counters.length) {
 }
 
 /* ---------- REALITY CHECK: BAR PROGRESS ON VIEW ---------- */
-const statCards = document.querySelectorAll('.stat-card');
+const statCards = document.querySelectorAll('.stat-card, .stat-card-flip');
 
 if (statCards.length) {
     const ioBars = new IntersectionObserver((entries, obs) => {
