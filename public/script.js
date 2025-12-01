@@ -84,6 +84,29 @@ if (counters.length) {
     counters.forEach(c => io.observe(c));
 }
 
+/* ---------- REALITY CHECK: BAR PROGRESS ON VIEW ---------- */
+const statCards = document.querySelectorAll('.stat-card');
+
+if (statCards.length) {
+    const ioBars = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const card = entry.target;
+            const percent = Math.max(0, Math.min(100, +(card.getAttribute('data-percent') || 0)));
+            const bar = card.querySelector('.stat-progress .bar');
+            if (bar) {
+                // Trigger width animation
+                requestAnimationFrame(() => {
+                    bar.style.width = percent + '%';
+                });
+            }
+            obs.unobserve(card);
+        });
+    }, { threshold: 0.5 });
+
+    statCards.forEach((card) => ioBars.observe(card));
+}
+
 /* ---------- GAME SIMULASI (single safe function) ---------- */
 /* ---------- SAFEGUARDS FOR PAGE-SPECIFIC ELEMENTS ---------- */
 const choicesArea = document.getElementById('choices-area');

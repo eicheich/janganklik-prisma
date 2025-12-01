@@ -95,63 +95,64 @@ export default function Simulation() {
     if (!level) return <div>Level not found</div>;
 
     return (
-        <div className="sim-body">
+        <>
             <Header />
 
-            <a href="/" className="back-btn">
-                <i className="ri-arrow-left-line"></i> KEMBALI KE BASE
-            </a>
+            <div className="sim-body">
+                
 
-            <div className="sim-fullscreen">
-                <div className="sim-instruction">
-                    <div className="badge-level">{level.badge}</div>
-                    <h1 dangerouslySetInnerHTML={{ __html: level.title }} />
-                    <p dangerouslySetInnerHTML={{ __html: level.desc }} />
-                    <div id="game-status" className="status-box">
-                        {status}
-                    </div>
-                    {showNext && (
-                        <div className="next-level-btn">
-                            <a href={`/simulation?level=${currentLevel + 1}`} className="btn-primary">
-                                LANJUT LEVEL BERIKUTNYA <i className="ri-skip-forward-line"></i>
-                            </a>
+                <div className="sim-fullscreen">
+                    <div className="sim-instruction">
+                        <div className="badge-level">{level.badge}</div>
+                        <h1 dangerouslySetInnerHTML={{ __html: level.title }} />
+                        <p dangerouslySetInnerHTML={{ __html: level.desc }} />
+                        <div id="game-status" className="status-box">
+                            {status}
                         </div>
-                    )}
-                </div>
+                        {showNext && (
+                            <div className="next-level-btn">
+                                <a href={`/simulation?level=${currentLevel + 1}`} className="btn-primary">
+                                    LANJUT LEVEL BERIKUTNYA <i className="ri-skip-forward-line"></i>
+                                </a>
+                            </div>
+                        )}
+                    </div>
 
-                <div className="phone-mockup tilt-element">
-                    <div className="phone-header">
-                        <div className="avatar"></div>
-                        <div>
-                            <h4>+62 812-xxxx-xxxx</h4>
-                            <small>Online</small>
+                    <div className="phone-mockup tilt-element">
+                        <div className="phone-header">
+                            <div className="avatar"></div>
+                            <div>
+                                <h4>+62 812-xxxx-xxxx</h4>
+                                <small>Online</small>
+                            </div>
                         </div>
-                    </div>
-                    <div className="chat-area" id="chat-box">
-                        {chatMessages.map((msg, idx) => (
-                            <div
-                                key={idx}
-                                className={`msg ${msg.type}`}
-                                dangerouslySetInnerHTML={{ __html: msg.text }}
-                            />
-                        ))}
-                    </div>
-                    {gameActive && (
-                        <div className="choices" id="choices-area">
-                            {level.choices.map((choice) => (
-                                <button
-                                    key={choice.id}
-                                    onClick={() => playGame(choice.id)}
-                                    className={choice.isSafe ? 'btn-safe' : 'btn-danger'}
-                                >
-                                    {choice.label}
-                                </button>
+                        <div className="chat-area" id="chat-box">
+                            {chatMessages.map((msg, idx) => (
+                                <div
+                                    key={idx}
+                                    className={`msg ${msg.type}`}
+                                    dangerouslySetInnerHTML={{ __html: msg.text }}
+                                />
                             ))}
                         </div>
-                    )}
+                        {gameActive && (
+                            <div className="choices" id="choices-area">
+                                {level.choices.map((choice) => (
+                                    <button
+                                        key={choice.id}
+                                        onClick={() => playGame(choice.id)}
+                                        className={choice.isSafe ? 'btn-safe' : 'btn-danger'}
+                                    >
+                                        {choice.label}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
+
             <Footer />
-        </div>
+        </>
     );
 }

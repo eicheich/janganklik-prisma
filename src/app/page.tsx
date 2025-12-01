@@ -35,7 +35,7 @@ export default function Home() {
           <p>Data berdasarkan laporan BSSN & APJII 2024</p>
         </div>
         <div className="stats-grid">
-          <div className="stat-card highlight">
+          <div className="stat-card highlight" data-percent="74">
             <div className="icon-stat">
               <i className="ri-virus-line"></i>
             </div>
@@ -44,8 +44,11 @@ export default function Home() {
             </h3>
             <span className="suffix">Juta</span>
             <p>Pengguna Internet RI (Target Empuk)</p>
+            <div className="stat-progress" aria-hidden="true">
+              <div className="bar"></div>
+            </div>
           </div>
-          <div className="stat-card highlight">
+          <div className="stat-card highlight" data-percent="80">
             <div className="icon-stat">
               <i className="ri-lock-password-line"></i>
             </div>
@@ -54,8 +57,11 @@ export default function Home() {
             </h3>
             <span className="suffix">M</span>
             <p>Serangan Siber Terekam (2023-2024)</p>
+            <div className="stat-progress" aria-hidden="true">
+              <div className="bar"></div>
+            </div>
           </div>
-          <div className="stat-card highlight">
+          <div className="stat-card highlight" data-percent="65">
             <div className="icon-stat">
               <i className="ri-spy-line"></i>
             </div>
@@ -64,6 +70,9 @@ export default function Home() {
             </h3>
             <span className="suffix">%</span>
             <p>Korban Penipuan Online adalah Gen Z & Milenial</p>
+            <div className="stat-progress" aria-hidden="true">
+              <div className="bar"></div>
+            </div>
           </div>
         </div>
         <div className="data-source">
