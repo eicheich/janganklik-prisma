@@ -166,6 +166,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: start;
 }
 
 .stat-card {
@@ -271,14 +272,14 @@ h1 {
 .stat-details {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
   margin-top: 0;
   padding: 0 8px;
   opacity: 0;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s ease,
+              opacity 0.3s ease 0.1s,
               margin-top 0.3s ease;
+  width: 100%;
 }
 
 .stat-card.open .stat-details {
@@ -287,7 +288,7 @@ h1 {
 }
 
 .stat-details ul {
-  margin: 10px 0 0 0;
+  margin: 10px 0 5px 0;
   padding-left: 18px;
   display: grid;
   gap: 8px;
