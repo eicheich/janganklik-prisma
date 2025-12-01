@@ -1,65 +1,117 @@
-import Image from "next/image";
+/* eslint-disable react/jsx-no-comment-textnodes */
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <Header />
+      <header id="hero">
+        <div className="hero-content">
+          <div className="status-indicator">
+            <span className="blink"></span> SYSTEM: UNSECURED
+          </div>
+          <h1 className="hacker-text" data-value="ARE YOU SAFE?">
+            ARE YOU SAFE?
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p>
+            Di tahun 2024, Indonesia mengalami <strong>1.2 Miliar+</strong> anomali trafik siber. Jangan jadi korban berikutnya.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href="#simulation-teaser" className="btn-primary">
+            Tes Kepekaan <i className="ri-gamepad-line"></i>
           </a>
         </div>
-      </main>
-    </div>
+      </header>
+      <div className="marquee-wrapper">
+        <div className="marquee-content">
+          DATA PRIVACY • STOP PINJOL ILEGAL • SARING SEBELUM SHARING • THINK BEFORE YOU POST • NO HOAX • DATA PRIVACY • STOP PINJOL ILEGAL • SARING SEBELUM SHARING • THINK BEFORE YOU POST • NO HOAX • DATA PRIVACY • STOP PINJOL ILEGAL • SARING SEBELUM SHARING • THINK BEFORE YOU POST • NO HOAX • DATA PRIVACY • STOP PINJOL ILEGAL • SARING SEBELUM SHARING • THINK BEFORE YOU POST • NO HOAX •
+        </div>
+      </div>
+      <section id="stats" className="stats-section">
+        <div className="section-title">
+          <h2>
+            REALITY CHECK <span className="accent"> ///</span>
+          </h2>
+          <p>Data berdasarkan laporan BSSN & APJII 2024</p>
+        </div>
+        <div className="stats-grid">
+          <div className="stat-card highlight">
+            <div className="icon-stat">
+              <i className="ri-virus-line"></i>
+            </div>
+            <h3 className="counter" data-target="221">
+              221
+            </h3>
+            <span className="suffix">Juta</span>
+            <p>Pengguna Internet RI (Target Empuk)</p>
+          </div>
+          <div className="stat-card highlight">
+            <div className="icon-stat">
+              <i className="ri-lock-password-line"></i>
+            </div>
+            <h3 className="counter" data-target="403">
+              403
+            </h3>
+            <span className="suffix">M</span>
+            <p>Serangan Siber Terekam (2023-2024)</p>
+          </div>
+          <div className="stat-card highlight">
+            <div className="icon-stat">
+              <i className="ri-spy-line"></i>
+            </div>
+            <h3 className="counter" data-target="65">
+              65
+            </h3>
+            <span className="suffix">%</span>
+            <p>Korban Penipuan Online adalah Gen Z & Milenial</p>
+          </div>
+        </div>
+        <div className="data-source">
+          <small>
+            <i className="ri-information-line"></i> Sumber Data:{' '}
+            <a href="https://apjii.or.id/" target="_blank">
+              APJII 2024
+            </a>{' '}
+            &{' '}
+            <a href="https://www.bssn.go.id/" target="_blank">
+              BSSN Monitoring 2023
+            </a>
+            .
+          </small>
+        </div>
+      </section>
+      <section id="threats" className="threats-section">
+        <div className="section-title center-title">
+          <h2>ANCAMAN POPULER ⚠️</h2>
+          <p>Kenali modus-modus yang paling sering menjerat korban.</p>
+        </div>
+        <div className="threats-grid">
+          <a href="/education#phishing" className="threat-card">
+            <i className="ri-mail-line"></i> <h3>Phishing / APK Scam</h3>
+            <p>Mengincar data bank/OTP via tautan atau file berbahaya.</p>
+          </a>
+          <a href="/education#soceng" className="threat-card">
+            <i className="ri-user-star-line"></i> <h3>Social Engineering</h3>
+            <p>Manipulasi psikologis untuk mendapatkan informasi rahasia.</p>
+          </a>
+          <a href="/education#password" className="threat-card">
+            <i className="ri-lock-password-line"></i> <h3>Password Hygiene</h3>
+            <p>Kelola kata sandi dengan aman untuk mencegah kebocoran.</p>
+          </a>
+        </div>
+      </section>
+      <section id="simulation-teaser" className="teaser-section">
+        <div className="teaser-content">
+          <h2>🛑 DETEKSI SCAM LEVEL UP</h2>
+          <p>
+            Seberapa pintar kamu menghadapi scammer? Ikuti simulasi chat interaktif dan buktikan kamu kebal dari modus penipuan.
+          </p>
+          <a href="/simulation" className="btn-glitch big-btn">
+            MULAI SIMULASI <i className="ri-arrow-right-up-line"></i>
+          </a>
+        </div>
+      </section>
+      <Footer />
+    </>
   );
 }
