@@ -170,63 +170,91 @@ h1 {
   margin-bottom: 4rem;
 }
 
-/* Card Flip Container */
+/* 1. CONTAINER: Hanya sebagai pembungkus area & perspektif */
 .stat-card-flip {
-  height: 320px;
-  perspective: 1000px;
-  cursor: pointer;
+  /* Pastikan lebar mengikuti grid parent */
+  width: 100%;
+  height: 380px; /* Tinggi lebih besar */
+
+  perspective: 1000px; /* Jarak pandang 3D */
   position: relative;
+
+  /* PENTING: Jangan pakai display flex/grid di sini */
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
   z-index: 1;
+}.stat-card-flip:hover {
+  z-index: 50; /* Biar timbul di atas yang lain saat hover */
 }
 
-.stat-card-flip:hover {
-  z-index: 10;
-}
-
+/* 2. INNER: Elemen yang berputar */
 .stat-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s ease-in-out;
+
+  /* Kunci titik putar tepat di tengah */
+  transform-origin: center center;
+
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  transform: rotateY(0deg);
+
+  /* Tips: will-change memberi tahu browser untuk siap-siap render 3D */
+  will-change: transform;
 }
 
+/* Trigger Rotasi */
 .stat-card-flip:hover .stat-card-inner {
   transform: rotateY(180deg);
 }
 
+/* 3. FACES: Sisi Depan & Belakang */
 .stat-card-front,
 .stat-card-back {
+  /* KUNCI MASALAH "LARI": */
+  /* Harus Absolute biar menumpuk 100% pas di koordinat 0,0 parent-nya */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
+
+  /* Sembunyikan punggung kartu */
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  /* Reset margin/padding luar */
+  margin: 0;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
   border-radius: 16px;
+
+  /* Flexbox HANYA untuk isi konten di DALAM kartu, bukan kartunya sendiri */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
-  text-align: center;
 }
 
+/* Styling visual Front */
 .stat-card-front {
   background: linear-gradient(135deg, var(--card-bg) 0%, #1a1a1a 100%);
   border: 2px solid var(--neon-red);
   box-shadow: 0 0 40px rgba(255, 0, 85, 0.15), inset 0 0 60px rgba(255, 0, 85, 0.05);
-  transform: rotateY(0deg);
+  transform: rotateY(0deg); /* Posisi awal */
+  text-align: center;
 }
 
+/* Styling visual Back */
 .stat-card-back {
   background: linear-gradient(135deg, #1a1a1a 0%, var(--card-bg) 100%);
   border: 2px solid var(--neon-green);
   box-shadow: 0 0 40px rgba(0, 255, 102, 0.2), inset 0 0 60px rgba(0, 255, 102, 0.05);
-  transform: rotateY(180deg);
-  padding: 1.8rem;
+  transform: rotateY(180deg); /* Posisi awal dibalik */
+  padding: 1.5rem; /* Padding konten dalam */
 }
 
 .icon-stat {
@@ -238,8 +266,17 @@ h1 {
 }
 
 @keyframes iconPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 .counter {
@@ -270,46 +307,6 @@ h1 {
   margin: 0.5rem 0;
 }
 
-/* Interactive progress bar inside stat card */
-.stat-progress {
-  height: 8px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: 0.8rem;
-  position: relative;
-}
-
-.stat-progress .bar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--neon-red), var(--neon-blue), var(--neon-green));
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
-  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: width;
-  position: relative;
-}
-
-/* shimmer effect for the moving bar */
-.stat-progress .bar::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -40%;
-  width: 40%;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
-  filter: blur(2px);
-  animation: shimmer 1.5s linear infinite;
-}
-
-@keyframes shimmer {
-  0% { left: -40%; }
-  100% { left: 100%; }
-}
-
 /* Hover hint */
 .hover-hint {
   margin-top: 0.8rem;
@@ -325,8 +322,15 @@ h1 {
 }
 
 @keyframes hintPulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Back side styling */
@@ -538,7 +542,7 @@ h1 {
   }
 
   .stat-card-flip {
-    height: 300px;
+    height: 350px;
   }
 
   .counter {
@@ -908,4 +912,425 @@ footer p {
 /* Simulation Page Styles */
 .next-level-btn {
   margin-top: 20px;
+}
+
+/* --- INTERACTIVE COMPONENTS FOR TENTANG PAGE --- */
+
+/* Typing Text Cursor */
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--neon-green);
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Feature Cards */
+.feature-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-color, var(--neon-blue));
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow, 0 0 15px rgba(0, 243, 255, 0.2));
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 243, 255, 0.3);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--card-color, var(--neon-blue));
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px var(--card-color, var(--neon-blue));
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+.feature-card h3 {
+  color: var(--neon-blue);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-head);
+}
+
+.feature-card p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.feature-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.feature-details.visible {
+  max-height: 200px;
+}
+
+.feature-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-details li {
+  color: #e0e0e0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--card-color, var(--neon-blue));
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.feature-card:hover .feature-glow {
+  opacity: 1;
+}
+
+/* Terminal Component */
+.terminal {
+  background: #0a0a0a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  margin: 2rem 0;
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.terminal-button.close { background: #ff5f57; }
+.terminal-button.minimize { background: #ffbd2e; }
+.terminal-button.maximize { background: #28ca42; }
+
+.terminal-title {
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.terminal-body {
+  padding: 20px;
+  min-height: 200px;
+  background: #000;
+  color: #00ff66;
+}
+
+.terminal-line {
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+
+.terminal-prompt {
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+.terminal-command {
+  color: #fff;
+}
+
+.terminal-output {
+  color: #00ff66;
+  margin-left: 20px;
+}
+
+.terminal-error {
+  color: var(--neon-red);
+  margin-left: 20px;
+}
+
+.terminal-success {
+  color: var(--neon-green);
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.terminal-typing .terminal-cursor {
+  animation: blink 1s infinite;
+  color: var(--neon-green);
+}
+
+/* Progress Bars */
+.progress-container {
+  margin: 1.5rem 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.progress-percentage {
+  color: var(--neon-blue);
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Alert Animation */
+.alert-pulse {
+  animation: alertPulse 2s ease-in-out infinite;
+}
+
+@keyframes alertPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.6);
+  }
+}
+
+/* Stats Grid Animation */
+.stats-highlight {
+  animation: statsHighlight 3s ease-in-out;
+}
+
+@keyframes statsHighlight {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* --- REDESIGNED GOALS SECTION --- */
+
+.mission-statement {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.mission-content {
+  background: linear-gradient(135deg, var(--card-bg) 0%, #1a1a1a 100%);
+  border: 2px solid var(--neon-blue);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
+}
+
+.mission-icon {
+  font-size: 4rem;
+  color: var(--neon-blue);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px var(--neon-blue);
+}
+
+.mission-content h3 {
+  color: var(--neon-blue);
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.mission-content p {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.threat-landscape {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.threat-landscape h3 {
+  color: var(--neon-red);
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.threat-landscape > p {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.threat-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.threat-stat {
+  background: var(--card-bg);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.threat-stat:hover {
+  border-color: var(--neon-red);
+  box-shadow: 0 0 25px rgba(255, 0, 85, 0.15);
+  transform: translateY(-5px);
+}
+
+.threat-number {
+  font-size: 2.5rem;
+  font-family: var(--font-head);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--neon-red), #ff6b9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.threat-label {
+  color: var(--neon-red);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.threat-desc {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.impact-statement {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.impact-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, var(--card-bg) 100%);
+  border: 2px solid var(--neon-blue);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.impact-content h4 {
+  color: var(--neon-blue);
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.impact-content p {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid var(--neon-blue);
+  border-radius: 25px;
+  padding: 1rem 1.5rem;
+  color: var(--neon-blue);
+  font-weight: 600;
+}
+
+.impact-highlight i {
+  font-size: 1.2rem;
+}
+
+/* Responsive adjustments for goals section */
+@media (max-width: 768px) {
+  .mission-content {
+    padding: 2rem 1rem;
+  }
+
+  .mission-icon {
+    font-size: 3rem;
+  }
+
+  .threat-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .impact-content {
+    padding: 2rem 1rem;
+  }
 }

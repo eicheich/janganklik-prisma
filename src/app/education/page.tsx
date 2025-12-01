@@ -1,6 +1,18 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Terminal from '@/components/Terminal';
+
+const homeTerminalLines = [
+    { text: 'System Status: ACTIVE', type: 'output' as const, delay: 500 },
+    { text: 'Scanning global threat database...', type: 'output' as const, delay: 1000 },
+    { text: 'analyze --threats --indonesia', type: 'command' as const, delay: 1500 },
+    { text: '⚠️ 221 million vulnerable endpoints detected', type: 'output' as const, delay: 2000 },
+    { text: '⚠️ 403 million cyber attacks in 2023-2024', type: 'output' as const, delay: 2500 },
+    { text: '⚠️ 65% Gen Z/Millennial at high risk', type: 'output' as const, delay: 3000 },
+    { text: 'Defense protocols: ENGAGED', type: 'success' as const, delay: 3500 },
+    { text: 'Ready to protect digital citizens...', type: 'output' as const, delay: 4000 }
+];
 
 export default function Education() {
     return (
@@ -18,6 +30,14 @@ export default function Education() {
                     <i className="ri-alert-line"></i> Ingat: Data adalah Emas Digital Anda. Jaga
                     kerahasiaannya!
                 </div>
+
+                <section className="system-status-section">
+                    <div className="system-status-content">
+                        <h2>SISTEM KEAMANAN DIGITAL</h2>
+                        <p>Monitor real-time ancaman siber yang mengintai masyarakat Indonesia</p>
+                        <Terminal lines={homeTerminalLines} title="Cybersecurity Defense System" className="home-terminal" />
+                    </div>
+                </section>
 
                 <h2 id="phishing">1. Phishing & APK Scam (Modus 'Paket Resi')</h2>
                 <h3>Apa itu?</h3>
