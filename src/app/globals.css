@@ -177,7 +177,6 @@ h1 {
   cursor: pointer;
   position: relative;
   z-index: 1;
-  transform: translateZ(0);
 }
 
 .stat-card-flip:hover {
@@ -190,6 +189,7 @@ h1 {
   height: 100%;
   transition: transform 0.7s ease-in-out;
   transform-style: preserve-3d;
+  transform: rotateY(0deg);
 }
 
 .stat-card-flip:hover .stat-card-inner {
@@ -199,9 +199,12 @@ h1 {
 .stat-card-front,
 .stat-card-back {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -215,6 +218,7 @@ h1 {
   background: linear-gradient(135deg, var(--card-bg) 0%, #1a1a1a 100%);
   border: 2px solid var(--neon-red);
   box-shadow: 0 0 40px rgba(255, 0, 85, 0.15), inset 0 0 60px rgba(255, 0, 85, 0.05);
+  transform: rotateY(0deg);
 }
 
 .stat-card-back {
