@@ -30,9 +30,9 @@ export default function Home() {
       <section id="stats" className="stats-section">
         <div className="section-title">
           <h2>
-            REALITY CHECK <span className="accent"> ///</span>
+            KENYATAAN PAHIT <span className="accent"> ///</span>
           </h2>
-          <p>Data berdasarkan laporan BSSN & APJII 2024</p>
+          <p>Data aktual dari lapang perang digital Indonesia 2024</p>
         </div>
         <div className="stats-grid">
           <div className="stat-card highlight" data-percent="74">
@@ -43,9 +43,19 @@ export default function Home() {
               221
             </h3>
             <span className="suffix">Juta</span>
-            <p>Pengguna Internet RI (Target Empuk)</p>
+            <p>Target Empuk di Indonesia</p>
             <div className="stat-progress" aria-hidden="true">
               <div className="bar"></div>
+            </div>
+            <button className="stat-toggle" aria-expanded={false} aria-controls="stat-detail-1">
+              Selengkapnya <i className="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </button>
+            <div className="stat-details" id="stat-detail-1" hidden>
+              <ul>
+                <li>🔴 60%+ akses lewat smartphone yang rentan</li>
+                <li>🔴 Mayoritas gak aktifin 2FA & jarang update sistem</li>
+                <li>💡 Hacker cari yang lemah duluan - jangan jadi korban!</li>
+              </ul>
             </div>
           </div>
           <div className="stat-card highlight" data-percent="80">
@@ -56,9 +66,19 @@ export default function Home() {
               403
             </h3>
             <span className="suffix">M</span>
-            <p>Serangan Siber Terekam (2023-2024)</p>
+            <p>Serangan Siber Tercatat</p>
             <div className="stat-progress" aria-hidden="true">
               <div className="bar"></div>
+            </div>
+            <button className="stat-toggle" aria-expanded={false} aria-controls="stat-detail-2">
+              Selengkapnya <i className="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </button>
+            <div className="stat-details" id="stat-detail-2" hidden>
+              <ul>
+                <li>⚠️ Phishing, ransomware, & credential stuffing mendominasi</li>
+                <li>⏰ Jam sibuk = jam rawan (pagi & malam hari)</li>
+                <li>🛡️ Kamu butuh: Password kuat + 2FA + waspada selalu!</li>
+              </ul>
             </div>
           </div>
           <div className="stat-card highlight" data-percent="65">
@@ -69,23 +89,32 @@ export default function Home() {
               65
             </h3>
             <span className="suffix">%</span>
-            <p>Korban Penipuan Online adalah Gen Z & Milenial</p>
+            <p>Gen Z & Milenial Jadi Korban</p>
             <div className="stat-progress" aria-hidden="true">
               <div className="bar"></div>
+            </div>
+            <button className="stat-toggle" aria-expanded={false} aria-controls="stat-detail-3">
+              Selengkapnya <i className="ri-arrow-down-s-line" aria-hidden="true"></i>
+            </button>
+            <div className="stat-details" id="stat-detail-3" hidden>
+              <ul>
+                <li>💸 Giveaway palsu, investasi instan, APK kiriman &quot;kurir&quot;</li>
+                <li>🧠 Mereka mainkan FOMO & kepercayaanmu ke influencer</li>
+                <li>✅ Cek link, jangan install APK sembarangan, waspada urgent!</li>
+              </ul>
             </div>
           </div>
         </div>
         <div className="data-source">
           <small>
-            <i className="ri-information-line"></i> Sumber Data:{' '}
+            <i className="ri-information-line"></i> Sumber:{' '}
             <a href="https://apjii.or.id/" target="_blank">
               APJII 2024
             </a>{' '}
             &{' '}
             <a href="https://www.bssn.go.id/" target="_blank">
-              BSSN Monitoring 2023
+              BSSN 2023
             </a>
-            .
           </small>
         </div>
       </section>

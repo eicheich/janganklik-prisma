@@ -146,6 +146,9 @@ h1 {
 /* STATS SECTION */
 .stats-section {
   padding: 5rem 10%;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center top, rgba(0, 243, 255, 0.08) 0%, transparent 50%);
 }
 
 .section-title {
@@ -215,6 +218,86 @@ h1 {
   box-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
   transition: width 1.2s ease-in-out;
   will-change: width;
+  position: relative;
+}
+
+/* shimmer effect for the moving bar */
+.stat-progress .bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 40%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+  filter: blur(2px);
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* toggle button for insights */
+.stat-toggle {
+  margin-top: 12px;
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.2);
+  color: var(--neon-blue);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.stat-toggle:hover {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  transform: translateY(-1px);
+}
+
+.stat-card.open .stat-toggle i {
+  transform: rotate(180deg);
+  transition: transform .25s ease;
+}
+
+/* expandable details */
+.stat-details {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  margin-top: 0;
+  padding: 0 8px;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease,
+              margin-top 0.3s ease;
+}
+
+.stat-card.open .stat-details {
+  margin-top: 15px;
+  opacity: 1;
+}
+
+.stat-details ul {
+  margin: 10px 0 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.stat-details li {
+  list-style: none;
+  color: #cfd8dc;
+  font-size: 0.95rem;
+  padding-left: 4px;
 }
 
 /* SIMULATION SECTION */

@@ -114,3 +114,31 @@ const choicesArea = document.getElementById('choices-area');
 if (choicesArea) {
     choicesArea.addEventListener('mousemove', (e) => e.stopPropagation());
 }
+
+/* ---------- REALITY CHECK: TOGGLE INSIGHTS (clean version) ---------- */
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.stat-toggle');
+    if (!btn) return;
+
+    e.preventDefault();
+
+    const card = btn.closest('.stat-card');
+    if (!card) return;
+
+    const panel = card.querySelector('.stat-details');
+    if (!panel) return;
+
+    const isOpen = card.classList.contains('open');
+
+    if (isOpen) {
+        // Close
+        card.classList.remove('open');
+        panel.style.maxHeight = '0px';
+        btn.setAttribute('aria-expanded', 'false');
+    } else {
+        // Open
+        card.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+    }
+});
