@@ -1,10 +1,273 @@
-# 🛡️ JanganKlik ! - Portal Edukasi Keamanan Siber <div align="center"> ![JanganKlik Banner](https: //img.shields.io/badge/JanganKlik!-Cybersecurity%20Education-00f3ff?style=for-the-badge&logo=shield&logoColor=white)
+# 🛡️ JanganKlik! - Portal Edukasi Keamanan Siber
 
-    **Portal edukasi interaktif untuk meningkatkan kesadaran keamanan siber di Indonesia** [Demo Live](#) • [Dokumentasi](#fitur-utama) • [Kontribusi](#kontribusi) </div> --- ## 📋 Daftar Isi - [Tentang Project](#-tentang-project) - [Fitur Utama](#-fitur-utama) - [Alur Website](#-alur-website) - [Tech Stack](#-tech-stack) - [Instalasi & Setup](#-instalasi--setup) - [Setup Gemini AI](#-setup-gemini-ai-untuk-ai-link-checker) - [Struktur Project](#-struktur-project) - [Screenshots](#-screenshots) - [Kontribusi](#-kontribusi) - [Lisensi](#-lisensi) --- ## 🎯 Tentang Project **JanganKlik !** adalah portal edukasi keamanan siber yang dirancang untuk membantu masyarakat Indonesia mengenali dan menghindari berbagai modus penipuan digital. Dengan pendekatan gamifikasi dan simulasi interaktif, pengguna dapat belajar langsung cara mengidentifikasi: - 🎣 **Phishing** - Email, SMS, dan website palsu - 📱 **Malware APK** - Aplikasi berbahaya yang menyamar - 📞 **Voice Phishing (Vishing)** - Penipuan via telepon - 🎭 **Deepfake Scam** - Video call palsu menggunakan AI - 💰 **Social Engineering** - Manipulasi psikologis online - 🏦 **Pinjol Ilegal** - Pinjaman online berbahaya --- ## ✨ Fitur Utama ### 1. 🎮 Simulasi Interaktif Pelajari berbagai modus penipuan melalui simulasi realistis: - Simulasi chat WhatsApp, Instagram, E-commerce - Simulasi email phishing - Simulasi voice call (dengan audio asli) - Simulasi video call deepfake (dengan video) - Simulasi browser phishing & popup scareware ### 2. 🤖 AI Link Checker (Powered by Gemini AI) Fitur pengecekan keamanan link menggunakan AI: - Analisis URL secara real-time - Deteksi pola phishing dan malware - Saran keamanan yang actionable - Gratis menggunakan Gemini AI API ### 3. 📚 Materi Edukasi Konten pembelajaran tentang keamanan siber: - Penjelasan modus penipuan terbaru - Tips proteksi diri - Prosedur darurat jika terkena penipuan ### 4. 🚨 Protokol Darurat Panduan langkah-langkah jika Anda menjadi korban penipuan --- ## 🔄 Alur Website ``` ┌─────────────────────────────────────────────────────────────────┐ │ HOMEPAGE (/) │ │ - Hero section dengan statistik penipuan │ │ - Tombol "I'M NOT SAFE"untuk protokol darurat │ │ - 3 Fitur utama: Simulasi, AI Checker, Edukasi │ └───────────────────────────┬─────────────────────────────────────┘ │ ┌───────────────────┼───────────────────┐ ▼ ▼ ▼ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ │ SIMULASI │ │ AI CHECKER │ │ EDUKASI │ │ /simulation │ │ /ai-checker │ │ /education │ └───────┬───────┘ └───────────────┘ └───────────────┘ │ ▼ ┌─────────────────────────────────────────────────────────────────┐ │ PILIH SKENARIO │ │ 10 Skenario penipuan yang bisa dipilih: │ │ 1. Phishing APK 6. Fake Login (Browser) │ │ 2. Voice Phishing 7. Scareware Popup │ │ 3. Deepfake Video 8. Email Phishing │ │ 4. Giveaway Bodong 9. Pinjol Ilegal │ │ 5. E-commerce Fraud 10. Social Media Scam │ └───────────────────────────┬─────────────────────────────────────┘ │ ▼ ┌─────────────────────────────────────────────────────────────────┐ │ GAMEPLAY SIMULASI │ │ - Tampilan mockup HP/Browser realistis │ │ - Interaksi: Klik jebakan atau pilih aksi aman │ │ - Audio/Video untuk simulasi telepon & video call │ │ - Feedback: AMAN ✅ atau BAHAYA ❌ │ │ - Penjelasan edukasi setelah selesai │ └─────────────────────────────────────────────────────────────────┘ ``` ### Alur Detail Simulasi: 1. **Pilih Skenario** → User memilih salah satu dari 10 skenario 2. **Baca Instruksi** → Panel kiri menampilkan konteks dan petunjuk 3. **Interaksi** → User berinteraksi dengan mockup (HP/Browser) - Untuk **Chat**: Klik pesan/link yang mencurigakan ATAU block sender - Untuk **Phone Call**: Angkat/Tolak telepon, dengarkan audio - Untuk **Video Call**: Angkat/Tolak, lihat video deepfake - Untuk **Browser**: Periksa URL palsu, jangan login - Untuk **Popup**: Tutup popup tanpa klik tombol berbahaya 4. **Hasil** → Feedback apakah terjebak atau aman 5. **Edukasi** → Penjelasan modus dan cara menghindari --- ## 🛠️ Tech Stack | Kategori | Teknologi | |----------|-----------| | **Framework** | Next.js 14 (App Router) | | **Language** | TypeScript | | **Styling** | Tailwind CSS + Custom CSS | | **Icons** | Remix Icons | | **AI** | Google Gemini AI API | | **Audio/Video** | HTML5 Media API | --- ## 🚀 Instalasi & Setup ### Prerequisites - Node.js 18+ - npm atau yarn - Akun Google (untuk Gemini API) ### Langkah Instalasi ```bash # 1. Clone repository git clone https: //github.com/eicheich/janganklik-prisma.git
-    cd janganklik-prisma/nextjs # 2. Install dependencies npm install # 3. Setup environment variables (lihat bagian Gemini AI di bawah) cp .env.example .env.local # Edit .env.local dan tambahkan GEMINI_API_KEY # 4. Jalankan development server npm run dev # 5. Buka browser # http: //localhost:3000
-    ``` --- ## 🤖 Setup Gemini AI untuk AI Link Checker Fitur AI Link Checker menggunakan **Google Gemini AI** yang **GRATIS** untuk digunakan. ### Langkah 1: Dapatkan API Key 1. Buka browser dan kunjungi: **https: //aistudio.google.com/app/apikey**
-    2. Login dengan akun Google Anda 3. Klik tombol **"Create API key"** 4. Pilih project atau buat baru 5. **Copy API key** yang muncul (format: `AIzaSy...`) > ⚠️ **Penting**: Simpan API key dengan aman, jangan bagikan ke publik ! ### Langkah 2: Setup Environment Variable 1. Buat file `.env.local` di folder `nextjs/`: ```bash # Di folder nextjs/ touch .env.local ``` 2. Tambahkan API key ke file `.env.local`: ```env GEMINI_API_KEY=AIzaSyD_your_api_key_here ``` ### Langkah 3: Restart Server ```bash # Hentikan server (Ctrl+C) lalu jalankan ulang npm run dev ``` ### Langkah 4: Testing 1. Buka `http: //localhost:3000/ai-checker`
-    2. Masukkan URL untuk dianalisis: - Test aman: `https: //google.com`
-    - Test berbahaya: `https: //faceb00k-security.com/login`
+<div align="center">
 
-    ### Troubleshooting | Error | Solusi | |-------|--------| | `GEMINI_API_KEY is not set` | Pastikan `.env.local` ada dan restart server | | `API_KEY_INVALID` | Periksa API key, pastikan tidak ada typo | | `Quota exceeded` | Tunggu beberapa menit (limit: 60 req/menit) | ### Keamanan API Key - ✅ File `.env.local` sudah di-ignore oleh Git - ❌ Jangan commit API key ke repository - ❌ Jangan share API key di public --- ## 📁 Struktur Project ``` nextjs/ ├── public/ │ ├── voicecall.m4a # Audio untuk simulasi voice phishing │ └── videocall-deepfake.mp4 # Video untuk simulasi deepfake ├── src/ │ ├── app/ │ │ ├── page.tsx # Homepage │ │ ├── ai-checker/ # AI Link Checker │ │ ├── education/ # Halaman Edukasi │ │ ├── simulation/ # Halaman Pilih Simulasi │ │ │ └── [id]/ # Gameplay Simulasi │ │ └── tentang/ # Halaman Tentang │ ├── components/ │ │ ├── Header.tsx # Navigation header │ │ ├── Footer.tsx # Footer │ │ └── ... │ ├── lib/ │ │ └── simulation-data.ts # Data skenario simulasi │ └── actions/ │ └── ai-safety.ts # Server action untuk Gemini AI ├── .env.local # Environment variables (tidak di-commit) └── package.json ``` --- ## 📸 Screenshots ### Homepage ![Homepage](docs/screenshots/homepage.png) ### Simulasi - Pilih Skenario ![Simulasi](docs/screenshots/simulation.png) ### Gameplay - Voice Phishing ![Voice Phishing](docs/screenshots/voice-phishing.png) ### Gameplay - Deepfake Video Call ![Deepfake](docs/screenshots/deepfake.png) ### AI Link Checker ![AI Checker](docs/screenshots/ai-checker.png) --- ## 🤝 Kontribusi Kontribusi sangat diterima ! Silakan: 1. Fork repository ini 2. Buat branch baru (`git checkout -b feature/AmazingFeature`) 3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`) 4. Push ke branch (`git push origin feature/AmazingFeature`) 5. Buka Pull Request --- ## 📄 Lisensi Distributed under the MIT License. See `LICENSE` for more information. --- ## 👨‍💻 Tim Pengembang Dibuat dengan ❤️ untuk **PrismaFest 2025** --- <div align="center"> **🛡️ Stay Safe Online ! Jangan Asal Klik ! 🛡️** </div>
+![JanganKlik Banner](https://img.shields.io/badge/JanganKlik!-Cybersecurity%20Education-00f3ff?style=for-the-badge&logo=shield&logoColor=white)
+
+**Portal edukasi interaktif untuk meningkatkan kesadaran keamanan siber di Indonesia**
+
+[Demo Live](#) • [Dokumentasi](#fitur-utama) • [Kontribusi](#kontribusi)
+
+</div>
+
+---
+
+## 📋 Daftar Isi
+
+- [Tentang Project](#-tentang-project)
+- [Fitur Utama](#-fitur-utama)
+- [Alur Website](#-alur-website)
+- [Tech Stack](#-tech-stack)
+- [Instalasi & Setup](#-instalasi--setup)
+- [Setup Gemini AI](#-setup-gemini-ai-untuk-ai-link-checker)
+- [Struktur Project](#-struktur-project)
+- [Screenshots](#-screenshots)
+- [Kontribusi](#-kontribusi)
+- [Lisensi](#-lisensi)
+
+---
+
+## 🎯 Tentang Project
+
+**JanganKlik!** adalah portal edukasi keamanan siber yang dirancang untuk membantu masyarakat Indonesia mengenali dan menghindari berbagai modus penipuan digital. Dengan pendekatan gamifikasi dan simulasi interaktif, pengguna dapat belajar langsung cara mengidentifikasi:
+
+- 🎣 **Phishing** - Email, SMS, dan website palsu
+- 📱 **Malware APK** - Aplikasi berbahaya yang menyamar
+- 📞 **Voice Phishing (Vishing)** - Penipuan via telepon
+- 🎭 **Deepfake Scam** - Video call palsu menggunakan AI
+- 💰 **Social Engineering** - Manipulasi psikologis online
+- 🏦 **Pinjol Ilegal** - Pinjaman online berbahaya
+
+---
+
+## ✨ Fitur Utama
+
+### 1. 🎮 Simulasi Interaktif
+Pelajari berbagai modus penipuan melalui simulasi realistis:
+- Simulasi chat WhatsApp, Instagram, E-commerce
+- Simulasi email phishing
+- Simulasi voice call (dengan audio asli)
+- Simulasi video call deepfake (dengan video)
+- Simulasi browser phishing & popup scareware
+
+### 2. 🤖 AI Link Checker (Powered by Gemini AI)
+Fitur pengecekan keamanan link menggunakan AI:
+- Analisis URL secara real-time
+- Deteksi pola phishing dan malware
+- Saran keamanan yang actionable
+- Gratis menggunakan Gemini AI API
+
+### 3. 📚 Materi Edukasi
+Konten pembelajaran tentang keamanan siber:
+- Penjelasan modus penipuan terbaru
+- Tips proteksi diri
+- Prosedur darurat jika terkena penipuan
+
+### 4. 🚨 Protokol Darurat
+Panduan langkah-langkah jika Anda menjadi korban penipuan
+
+---
+
+## 🔄 Alur Website
+
+```
+HOMEPAGE (/)
+├── Hero section dengan statistik penipuan
+├── Tombol "I'M NOT SAFE" untuk protokol darurat
+└── 3 Fitur utama: Simulasi, AI Checker, Edukasi
+         │
+         ├── SIMULASI (/simulation)
+         │   └── Pilih dari 10 skenario penipuan
+         │       ├── 1. Phishing APK
+         │       ├── 2. Voice Phishing
+         │       ├── 3. Deepfake Video Call
+         │       ├── 4. Giveaway Bodong
+         │       ├── 5. E-commerce Fraud
+         │       ├── 6. Fake Login (Browser)
+         │       ├── 7. Scareware Popup
+         │       ├── 8. Email Phishing
+         │       ├── 9. Pinjol Ilegal
+         │       └── 10. Social Media Scam
+         │
+         ├── AI CHECKER (/ai-checker)
+         │   └── Cek keamanan link dengan AI
+         │
+         └── EDUKASI (/education)
+             └── Materi pembelajaran keamanan siber
+```
+
+### Alur Detail Simulasi:
+
+1. **Pilih Skenario** → User memilih salah satu dari 10 skenario
+2. **Baca Instruksi** → Panel kiri menampilkan konteks dan petunjuk
+3. **Interaksi** → User berinteraksi dengan mockup (HP/Browser)
+   - Untuk **Chat**: Klik pesan/link yang mencurigakan ATAU block sender
+   - Untuk **Phone Call**: Angkat/Tolak telepon, dengarkan audio
+   - Untuk **Video Call**: Angkat/Tolak, lihat video deepfake
+   - Untuk **Browser**: Periksa URL palsu, jangan login
+   - Untuk **Popup**: Tutup popup tanpa klik tombol berbahaya
+4. **Hasil** → Feedback apakah terjebak atau aman
+5. **Edukasi** → Penjelasan modus dan cara menghindari
+
+---
+
+## 🛠️ Tech Stack
+
+| Kategori | Teknologi |
+|----------|-----------|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS + Custom CSS |
+| **Icons** | Remix Icons |
+| **AI** | Google Gemini AI API |
+| **Audio/Video** | HTML5 Media API |
+
+---
+
+## 🚀 Instalasi & Setup
+
+### Prerequisites
+- Node.js 18+
+- npm atau yarn
+- Akun Google (untuk Gemini API)
+
+### Langkah Instalasi
+
+```bash
+# 1. Clone repository
+git clone https://github.com/eicheich/janganklik-prisma.git
+cd janganklik-prisma/nextjs
+
+# 2. Install dependencies
+npm install
+
+# 3. Setup environment variables (lihat bagian Gemini AI di bawah)
+cp .env.example .env.local
+# Edit .env.local dan tambahkan GEMINI_API_KEY
+
+# 4. Jalankan development server
+npm run dev
+
+# 5. Buka browser
+# http://localhost:3000
+```
+
+---
+
+## 🤖 Setup Gemini AI untuk AI Link Checker
+
+Fitur AI Link Checker menggunakan **Google Gemini AI** yang **GRATIS** untuk digunakan.
+
+### Langkah 1: Dapatkan API Key
+
+1. Buka browser dan kunjungi: **https://aistudio.google.com/app/apikey**
+2. Login dengan akun Google Anda
+3. Klik tombol **"Create API key"**
+4. Pilih project atau buat baru
+5. **Copy API key** yang muncul (format: `AIzaSy...`)
+
+> ⚠️ **Penting**: Simpan API key dengan aman, jangan bagikan ke publik!
+
+### Langkah 2: Setup Environment Variable
+
+1. Buat file `.env.local` di folder `nextjs/`:
+
+```bash
+# Di folder nextjs/
+touch .env.local
+```
+
+2. Tambahkan API key ke file `.env.local`:
+
+```env
+GEMINI_API_KEY=AIzaSyD_your_api_key_here
+```
+
+### Langkah 3: Restart Server
+
+```bash
+# Hentikan server (Ctrl+C) lalu jalankan ulang
+npm run dev
+```
+
+### Langkah 4: Testing
+
+1. Buka `http://localhost:3000/ai-checker`
+2. Masukkan URL untuk dianalisis:
+   - Test aman: `https://google.com`
+   - Test berbahaya: `https://faceb00k-security.com/login`
+
+### Troubleshooting
+
+| Error | Solusi |
+|-------|--------|
+| `GEMINI_API_KEY is not set` | Pastikan `.env.local` ada dan restart server |
+| `API_KEY_INVALID` | Periksa API key, pastikan tidak ada typo |
+| `Quota exceeded` | Tunggu beberapa menit (limit: 60 req/menit) |
+
+### Keamanan API Key
+
+- ✅ File `.env.local` sudah di-ignore oleh Git
+- ❌ Jangan commit API key ke repository
+- ❌ Jangan share API key di public
+
+---
+
+## 📁 Struktur Project
+
+```
+nextjs/
+├── public/
+│   ├── voicecall.m4a              # Audio untuk simulasi voice phishing
+│   └── videocall-deepfake.mp4     # Video untuk simulasi deepfake
+├── src/
+│   ├── app/
+│   │   ├── page.tsx               # Homepage
+│   │   ├── ai-checker/            # AI Link Checker
+│   │   ├── education/             # Halaman Edukasi
+│   │   ├── simulation/            # Halaman Pilih Simulasi
+│   │   │   └── [id]/              # Gameplay Simulasi
+│   │   └── tentang/               # Halaman Tentang
+│   ├── components/
+│   │   ├── Header.tsx             # Navigation header
+│   │   ├── Footer.tsx             # Footer
+│   │   └── ...
+│   ├── lib/
+│   │   └── simulation-data.ts     # Data skenario simulasi
+│   └── actions/
+│       └── ai-safety.ts           # Server action untuk Gemini AI
+├── .env.local                     # Environment variables (tidak di-commit)
+└── package.json
+```
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi sangat diterima! Silakan:
+
+1. Fork repository ini
+2. Buat branch baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buka Pull Request
+
+---
+
+## 📄 Lisensi
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 👨‍💻 Tim Pengembang
+
+Dibuat dengan ❤️ untuk **PrismaFest 2025**
+
+---
+
+<div align="center">
+
+**🛡️ Stay Safe Online! Jangan Asal Klik! 🛡️**
+
+</div>
