@@ -2948,6 +2948,22 @@ h1 {
   .ai-score-box {
     border-right: none;
     border-bottom: 1px solid #333;
+    padding: 1.5rem 1rem;
+  }
+
+  .ai-status-text {
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+  .ai-score-circle {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .ai-score-text {
+    font-size: 2rem;
   }
 
   .ai-checker-title {
@@ -2955,22 +2971,34 @@ h1 {
   }
 
   .ai-input-wrapper {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .ai-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ai-input-icon {
+    top: 22px;
+    left: 15px;
+    font-size: 1.2rem;
   }
 
   .ai-input-field {
-    padding-right: 1rem;
-    padding-bottom: 4rem;
-    /* Space for button */
+    padding: 1rem 1rem 1rem 2.5rem !important;
+    font-size: 0.95rem;
   }
 
   .ai-scan-btn {
-    position: absolute;
-    bottom: 10px;
-    top: auto;
-    right: 10px;
-    left: 10px;
-    width: calc(100% - 20px);
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
   }
 }
 
@@ -5031,6 +5059,11 @@ h1 {
     margin-left: 0 !important;
     display: block !important;
     text-align: center;
+    padding: 12px 25px !important;
+    font-size: 0.85rem !important;
+    width: auto !important;
+    max-width: 250px !important;
+    margin: 20px auto 0 auto !important;
   }
 }
 
