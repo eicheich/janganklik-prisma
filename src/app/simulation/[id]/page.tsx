@@ -4,6 +4,13 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { SCENARIOS } from '@/lib/simulation-data';
 
+// Generate static params for all scenarios (required for static export)
+export function generateStaticParams() {
+    return SCENARIOS.map((scenario) => ({
+        id: scenario.id.toString(),
+    }));
+}
+
 export default function SimulationGamePage() {
     const router = useRouter();
     const params = useParams();
